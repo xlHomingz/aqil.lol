@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <title>Project Remake - Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 9999;
+            }
+        }
+        
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: auto;
+        }
+
+        .back-button {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project Remake</h1>
+    </header>
+    <main>
+        <section class="project-remake-container">
+            <div class="project-content">
+                <div class="project-images-wrapper">
+                    <div class="project-image-wrapper">
+                        <img src="resources/hitler.png" alt="Original Photo" class="project-image">
+                    </div>
+                    <div class="project-image-wrapper">
+                        <img src="resources/hitler_aqil.jpg" alt="Project Remake" class="project-image">
+                    </div>
+                </div>
+                <div class="project-description">
+                    <p>This photograph shows Adolf Hitler during a Nazi rally in the 1930s in Germany. It was taken by a professional photographer working for Nazi propaganda, probably by Heinrich Hoffmann, who was Hitler's official photographer. The photo was shot with a black-and-white film camera, which was common at that time. It captures Hitler in an open car while giving the Nazi salute to the crowd. The purpose of taking such photos was to spread Nazi propaganda and to show Hitler as a strong leader to the German people and the world.</p>
+                </div>
+                <a href="../" class="back-button">Back to Portfolio</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Aqil.lol</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        let longPressTimer;
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                longPressTimer = setTimeout(function() {
+                    e.preventDefault();
+                }, 500);
+            }
+        }, { passive: false });
+
+        document.addEventListener('touchend', function(e) {
+            if (e.target.tagName === 'IMG') {
+                clearTimeout(longPressTimer);
+            }
+        });
+
+        document.addEventListener('touchmove', function(e) {
+            if (e.target.tagName === 'IMG') {
+                clearTimeout(longPressTimer);
+            }
+        });
+    </script>
+    
+    <script type="text/javascript">
+    (function() {
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 417735939]);
+    var ldinsp = function(){
+    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=417735939&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 0);
+    })();
+    </script>
+
+</body>
+</html>
