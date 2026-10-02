@@ -2,7 +2,7 @@
 <html lang="az">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#000000">
     <meta name="robots" content="noindex">
     <meta name="description" content="Səhifə tapılmadı — Aqil.lol">
@@ -17,13 +17,15 @@
         <canvas class="nf-warp"></canvas>
         <div class="nf-glow nf-glow--a"></div>
         <div class="nf-glow nf-glow--b"></div>
+        <div class="nf-glow nf-glow--c"></div>
         <div class="nf-floor"><div class="nf-floor-plane"></div></div>
         <div class="nf-scan"></div>
         <div class="nf-vignette"></div>
     </div>
+    <div class="nf-ripples" aria-hidden="true"></div>
 
     <header class="nf-top">
-        <a class="nf-brand" href="/">Aqil<span>.lol</span></a>
+        <a class="nf-brand" href="/" data-leave>Aqil<span>.lol</span></a>
         <div class="nf-chips">
             <span class="nf-chip"><span class="nf-dot"></span>Siqnal itib</span>
             <span class="nf-chip nf-chip--mono" data-clock>--:--:--</span>
@@ -37,35 +39,39 @@
                 <span class="nf-ring nf-ring--2"></span>
                 <span class="nf-ring nf-ring--3"></span>
                 <span class="nf-satellite"></span>
+                <span class="nf-satellite nf-satellite--b"></span>
             </div>
 
             <p class="nf-eyebrow">Xəta kodu</p>
-            <h1 id="nf-title" class="nf-code" data-text="404">404</h1>
-            <h2 class="nf-heading">Bu koordinatda heç nə yoxdur</h2>
+            <div class="nf-code-wrap">
+                <h1 id="nf-title" class="nf-code" data-text="404">404</h1>
+            </div>
+            <h2 class="nf-heading" data-scramble>Bu koordinatda heç nə yoxdur</h2>
             <p class="nf-lead">Axtardığın səhifə ya silinib, ya köçürülüb, ya da heç vaxt mövcud olmayıb.</p>
 
             <div class="nf-actions">
-                <a class="nf-btn nf-btn--primary" href="/">
-                    <span>Ana səhifəyə qayıt</span>
+                <a class="nf-btn" href="/" data-leave data-magnet>
+                    <span class="nf-btn-label">Ana səhifəyə qayıt</span>
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </a>
-                <button class="nf-btn nf-btn--ghost" type="button" data-back>Geri qayıt</button>
             </div>
         </section>
 
         <section class="nf-panel" aria-label="Sistem məlumatı">
-            <div class="nf-panel-bar">
-                <span class="nf-light"></span><span class="nf-light"></span><span class="nf-light"></span>
-                <span class="nf-panel-title">diagnostika</span>
-            </div>
-            <div class="nf-terminal" data-terminal aria-live="polite"></div>
-            <div class="nf-redirect">
-                <div class="nf-progress" role="progressbar" aria-label="Avtomatik yönləndirmə" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <span class="nf-progress-fill" data-progress></span>
+            <div class="nf-panel-inner">
+                <div class="nf-panel-bar">
+                    <span class="nf-light"></span><span class="nf-light"></span><span class="nf-light"></span>
+                    <span class="nf-panel-title">diagnostika</span>
                 </div>
-                <div class="nf-redirect-row">
-                    <span data-redirect-label>Ana səhifəyə <b data-seconds>15</b> saniyəyə yönləndiriləcək</span>
-                    <button class="nf-link" type="button" data-cancel>Dayandır</button>
+                <div class="nf-terminal" data-terminal aria-live="polite"></div>
+                <div class="nf-redirect">
+                    <div class="nf-progress" role="progressbar" aria-label="Avtomatik yönləndirmə" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <span class="nf-progress-fill" data-progress></span>
+                    </div>
+                    <div class="nf-redirect-row">
+                        <span data-redirect-label>Ana səhifəyə <b data-seconds>15</b> saniyəyə yönləndiriləcək</span>
+                        <button class="nf-link" type="button" data-cancel>Dayandır</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -74,6 +80,8 @@
     <footer class="nf-footer">
         <span>&copy; 2026 Aqil.lol</span>
     </footer>
+
+    <div class="nf-curtain" aria-hidden="true"></div>
 
     <script src="/404.js" defer></script>
 </body>
