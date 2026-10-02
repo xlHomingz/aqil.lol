@@ -1,0 +1,772 @@
+:root {
+  --pink: 255, 105, 180;
+  --violet: 150, 110, 255;
+  --cyan: 110, 231, 255;
+  --text: #f4f2ff;
+  --muted: rgba(244, 242, 255, 0.58);
+  --line: rgba(255, 255, 255, 0.09);
+  --mx: 0;
+  --my: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+  overflow-x: clip;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  color: var(--text);
+  font-family: "Poppins", system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: rgba(var(--pink), 0.35);
+}
+
+a,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--cyan));
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+.nf-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: radial-gradient(110% 70% at 50% 0%, #0a0820 0%, #030309 50%, #000 100%);
+}
+
+.nf-backdrop > * {
+  position: absolute;
+  inset: 0;
+}
+
+.nf-warp {
+  width: 100%;
+  height: 100%;
+}
+
+.nf-glow {
+  inset: auto;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.22;
+  animation: drift 24s ease-in-out infinite alternate;
+}
+
+.nf-glow--a {
+  top: -25vmax;
+  left: -15vmax;
+  background: radial-gradient(circle, rgba(var(--violet), 0.9), transparent 65%);
+}
+
+.nf-glow--b {
+  right: -20vmax;
+  bottom: -30vmax;
+  background: radial-gradient(circle, rgba(var(--pink), 0.7), transparent 65%);
+  animation-duration: 30s;
+  animation-delay: -10s;
+}
+
+@keyframes drift {
+  to {
+    transform: translate3d(8vmax, 6vmax, 0) scale(1.15);
+  }
+}
+
+.nf-floor {
+  top: auto;
+  height: 42vh;
+  perspective: 300px;
+  opacity: 0.35;
+  -webkit-mask-image: linear-gradient(0deg, #000 5%, transparent 90%);
+  mask-image: linear-gradient(0deg, #000 5%, transparent 90%);
+}
+
+.nf-floor-plane {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: -30%;
+  height: 160%;
+  transform: rotateX(70deg);
+  transform-origin: 50% 100%;
+  background-image:
+    linear-gradient(rgba(var(--pink), 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--violet), 0.3) 1px, transparent 1px);
+  background-size: 52px 52px;
+  animation: floor 5s linear infinite;
+}
+
+@keyframes floor {
+  to {
+    background-position: 0 52px;
+  }
+}
+
+.nf-scan {
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+}
+
+.nf-scan::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 18vh;
+  background: linear-gradient(180deg, transparent, rgba(var(--cyan), 0.05), transparent);
+  animation: sweep 7s linear infinite;
+}
+
+@keyframes sweep {
+  from {
+    transform: translateY(-20vh);
+  }
+  to {
+    transform: translateY(120vh);
+  }
+}
+
+.nf-vignette {
+  background: radial-gradient(ellipse at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+.nf-top,
+.nf-main,
+.nf-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.nf-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(1100px, 100% - 2.5rem);
+  margin: 0 auto;
+  padding: 1.4rem 0;
+  animation: fadeDown 0.8s ease both;
+}
+
+.nf-brand {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+.nf-brand span {
+  color: rgb(var(--pink));
+}
+
+.nf-chips {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nf-chip--mono {
+  font-family: "JetBrains Mono", monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.nf-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(var(--pink));
+  box-shadow: 0 0 10px rgb(var(--pink));
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.nf-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: min(1100px, 100% - 2.5rem);
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+
+.nf-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  isolation: isolate;
+}
+
+.nf-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(520px, 92vw);
+  aspect-ratio: 1;
+  z-index: -1;
+  transform: translate(-50%, -58%) translate3d(calc(var(--mx) * -14px), calc(var(--my) * -14px), 0);
+  transition: transform 0.4s ease-out;
+}
+
+.nf-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.nf-ring--1 {
+  border-top-color: rgba(var(--pink), 0.6);
+  animation: spin 14s linear infinite;
+}
+
+.nf-ring--2 {
+  inset: 12%;
+  border-style: dashed;
+  border-color: rgba(var(--violet), 0.25);
+  animation: spin 26s linear infinite reverse;
+}
+
+.nf-ring--3 {
+  inset: 26%;
+  border-color: transparent;
+  border-left-color: rgba(var(--cyan), 0.5);
+  border-right-color: rgba(var(--cyan), 0.15);
+  animation: spin 9s linear infinite;
+}
+
+.nf-satellite {
+  position: absolute;
+  inset: 0;
+  animation: spin 14s linear infinite;
+}
+
+.nf-satellite::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 12px rgb(var(--pink)), 0 0 30px rgba(var(--pink), 0.8);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.nf-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgb(var(--cyan));
+  opacity: 0.85;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.nf-code {
+  position: relative;
+  margin: 0.25rem 0 0.5rem;
+  font-size: clamp(6.5rem, 26vw, 15rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  background: linear-gradient(180deg, #fff 10%, rgba(var(--pink), 0.95) 55%, rgba(var(--violet), 0.6) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 40px rgba(var(--pink), 0.35));
+  transform: translate3d(calc(var(--mx) * 10px), calc(var(--my) * 10px), 0);
+  transition: transform 0.4s ease-out;
+  animation: fadeUp 0.9s 0.2s ease both;
+}
+
+.nf-code::before,
+.nf-code::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  pointer-events: none;
+}
+
+.nf-code::before {
+  background: rgb(var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: glitchA 4.5s infinite steps(1);
+}
+
+.nf-code::after {
+  background: rgb(var(--pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: glitchB 4.5s infinite steps(1);
+}
+
+@keyframes glitchA {
+  0%,
+  88%,
+  100% {
+    opacity: 0;
+    transform: none;
+    clip-path: inset(0 0 0 0);
+  }
+  89% {
+    opacity: 0.8;
+    transform: translate(-6px, 2px);
+    clip-path: inset(10% 0 60% 0);
+  }
+  91% {
+    opacity: 0.8;
+    transform: translate(5px, -2px);
+    clip-path: inset(55% 0 20% 0);
+  }
+  93% {
+    opacity: 0.8;
+    transform: translate(-3px, 0);
+    clip-path: inset(30% 0 45% 0);
+  }
+  95% {
+    opacity: 0;
+  }
+}
+
+@keyframes glitchB {
+  0%,
+  88%,
+  100% {
+    opacity: 0;
+    transform: none;
+    clip-path: inset(0 0 0 0);
+  }
+  89% {
+    opacity: 0.7;
+    transform: translate(6px, -1px);
+    clip-path: inset(65% 0 5% 0);
+  }
+  92% {
+    opacity: 0.7;
+    transform: translate(-5px, 2px);
+    clip-path: inset(20% 0 55% 0);
+  }
+  94% {
+    opacity: 0.7;
+    transform: translate(3px, 0);
+    clip-path: inset(45% 0 30% 0);
+  }
+  96% {
+    opacity: 0;
+  }
+}
+
+.nf-heading {
+  font-size: clamp(1.3rem, 3.4vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  animation: fadeUp 0.9s 0.3s ease both;
+}
+
+.nf-lead {
+  max-width: 34rem;
+  margin-top: 0.75rem;
+  font-size: 0.98rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--muted);
+  text-wrap: balance;
+  animation: fadeUp 0.9s 0.4s ease both;
+}
+
+.nf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  animation: fadeUp 0.9s 0.5s ease both;
+}
+
+.nf-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.4rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.nf-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s ease;
+}
+
+.nf-btn--primary {
+  color: #12061a;
+  background: linear-gradient(135deg, #fff, rgb(255, 196, 228));
+  border: 1px solid transparent;
+  box-shadow: 0 10px 40px -10px rgba(var(--pink), 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+.nf-btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.85) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: shine 3.8s 1.5s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0%,
+  60% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.nf-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 50px -10px rgba(var(--pink), 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.nf-btn--primary:hover svg {
+  transform: translateX(3px);
+}
+
+.nf-btn--ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nf-btn--ghost:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nf-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.nf-panel {
+  position: relative;
+  width: min(560px, 100%);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(20, 16, 40, 0.65), rgba(8, 6, 18, 0.65));
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  overflow: hidden;
+  animation: fadeUp 1s 0.65s ease both;
+}
+
+.nf-panel::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--angle, 0deg), transparent 0 70%, rgba(var(--pink), 0.8), rgba(var(--cyan), 0.6), transparent);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: border 6s linear infinite;
+  pointer-events: none;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.nf-panel-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.nf-light {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.nf-light:first-child {
+  background: rgb(var(--pink));
+  box-shadow: 0 0 8px rgba(var(--pink), 0.8);
+}
+
+.nf-panel-title {
+  margin-left: auto;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nf-terminal {
+  min-height: 9.5rem;
+  padding: 1rem 1.1rem 0.5rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: rgba(244, 242, 255, 0.8);
+}
+
+.nf-line {
+  display: flex;
+  gap: 0.6rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.nf-prompt {
+  flex-shrink: 0;
+  color: rgb(var(--cyan));
+}
+
+.nf-line--err .nf-prompt,
+.nf-line--err .nf-msg {
+  color: rgb(var(--pink));
+}
+
+.nf-line--ok .nf-prompt {
+  color: rgb(140, 255, 190);
+}
+
+.nf-path {
+  color: #fff;
+  background: rgba(var(--violet), 0.18);
+  padding: 0 0.3rem;
+  border-radius: 4px;
+}
+
+.nf-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: rgb(var(--cyan));
+  animation: blink 1s steps(1) infinite;
+}
+
+.nf-redirect {
+  padding: 0.5rem 1.1rem 1rem;
+}
+
+.nf-progress {
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+
+.nf-progress-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, rgb(var(--violet)), rgb(var(--pink)), rgb(var(--cyan)));
+  box-shadow: 0 0 12px rgba(var(--pink), 0.7);
+}
+
+.nf-redirect-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.nf-redirect-row b {
+  color: #fff;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.nf-link {
+  flex-shrink: 0;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.nf-link:hover {
+  border-color: rgba(var(--pink), 0.5);
+  background: rgba(var(--pink), 0.08);
+}
+
+.nf-link[hidden] {
+  display: none;
+}
+
+.nf-footer {
+  padding: 1.2rem 0 1.6rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(244, 242, 255, 0.4);
+  letter-spacing: 0.03em;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 560px) {
+  .nf-chip:first-child {
+    display: none;
+  }
+
+  .nf-main {
+    gap: 2.25rem;
+    padding-top: 1rem;
+  }
+
+  .nf-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nf-btn {
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .nf-redirect-row {
+    font-size: 0.74rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
