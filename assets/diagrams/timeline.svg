@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="330" viewBox="0 0 1240 330" role="img" aria-label="Timeline of the disclosure, 19 to 24 November 2026, UTC+4">
+  <style>
+    text{font-family:Segoe UI,Helvetica,Arial,sans-serif}
+    .t{font-size:14px;font-weight:600;fill:#0f1b2d}
+    .s{font-size:12px;fill:#4a5b73}
+    .d{font-size:12px;font-weight:600;fill:#2563a8}
+  </style>
+  <rect width="1240" height="330" fill="#f6f9fc" rx="10"/>
+  <line x1="50" y1="150" x2="1190" y2="150" stroke="#9db4d0" stroke-width="3"/>
+  <circle cx="100" cy="150" r="9" fill="#2563a8"/>
+  <text class="d" x="100" y="120" text-anchor="middle">19 Nov 2026 · 22:47</text>
+  <text class="t" x="100" y="188" text-anchor="middle">Exploration</text>
+  <text class="s" x="100" y="206" text-anchor="middle">public chat widget</text>
+  <circle cx="265" cy="150" r="9" fill="#d97706"/>
+  <text class="d" x="265" y="120" text-anchor="middle">19 Nov 2026 · 23:21</text>
+  <text class="t" x="265" y="188" text-anchor="middle">Data exposure seen</text>
+  <text class="s" x="265" y="206" text-anchor="middle">public address, user records</text>
+  <circle cx="430" cy="150" r="9" fill="#2563a8"/>
+  <text class="d" x="430" y="120" text-anchor="middle">19 Nov 2026 · 23:35</text>
+  <text class="t" x="430" y="188" text-anchor="middle">API description viewed</text>
+  <text class="s" x="430" y="206" text-anchor="middle">public, machine-readable</text>
+  <circle cx="595" cy="150" r="9" fill="#7c3aed"/>
+  <text class="d" x="595" y="120" text-anchor="middle">20 Nov 2026 · 03:28</text>
+  <text class="t" x="595" y="188" text-anchor="middle">Report emailed</text>
+  <text class="s" x="595" y="206" text-anchor="middle">one screenshot attached</text>
+  <circle cx="760" cy="150" r="9" fill="#16a34a"/>
+  <text class="d" x="760" y="120" text-anchor="middle">22 Nov 2026 · 20:15</text>
+  <text class="t" x="760" y="188" text-anchor="middle">Access denied</text>
+  <text class="s" x="760" y="206" text-anchor="middle">first documented re-check</text>
+  <circle cx="925" cy="150" r="9" fill="#7c3aed"/>
+  <text class="d" x="925" y="120" text-anchor="middle">22 Nov 2026 · 20:16</text>
+  <text class="t" x="925" y="188" text-anchor="middle">Follow-up sent</text>
+  <text class="s" x="925" y="206" text-anchor="middle">no reply by 22:08</text>
+  <circle cx="1090" cy="150" r="9" fill="#16a34a"/>
+  <text class="d" x="1090" y="120" text-anchor="middle">24 Nov 2026 · 04:01</text>
+  <text class="t" x="1090" y="188" text-anchor="middle">API description closed</text>
+  <text class="s" x="1090" y="206" text-anchor="middle">now "Not Found", still no reply</text>
+  <rect x="595" y="236" width="165" height="26" rx="13" fill="#e9dffc"/>
+  <text class="s" x="677" y="254" text-anchor="middle">fix 1: date/time not recorded</text>
+  <rect x="925" y="236" width="165" height="26" rx="13" fill="#e9dffc"/>
+  <text class="s" x="1007" y="254" text-anchor="middle">fix 2: after 22:48, 22 Nov</text>
+  <text class="s" x="620" y="306" text-anchor="middle">All dates 2026, times UTC+4 (Azerbaijan). Sources: taskbar clock, file names, Gmail headers.</text>
+</svg>
